@@ -1,0 +1,647 @@
+/**
+MAIN INTERFACE CSS - BUTTONS/SCOREBOARDS/TABLE/OVERLAY
+ */
+* {
+    box-sizing: border-box;
+    margin:0px;
+    padding: 0px;
+}
+
+html {
+    background-color: #f0f0f0;
+}
+
+/* SCOREBOARD CONTAINERS */
+.main_container_left , .main_container_right {
+    border-style: solid;
+    border-color: #262626;
+    border-width: 2px;
+    width: 30%;
+    display: inline-block;
+    padding-top: 2%;
+    position: relative;
+    background-color: #bd9b75;
+    background-image: url("assets/wood.png");
+
+}
+
+.main_container {
+    text-align: center;
+    margin-top: 2%;
+}
+
+.main_container > .main_container_left, .main_container > .main_container_right {
+    margin-top: 100px;
+}
+
+.win_alert_p1 {
+    position: absolute;
+    background-color: black;
+    color: white;
+    height: 15%;
+    z-index: 1;
+    width: 100%;
+    visibility: hidden;
+    font-style: italic;
+}
+
+.win_alert_p2 {
+    position: absolute;
+    background-color: black;
+    color: white;
+    height: 15%;
+    z-index: 1;
+    width: 100%;
+    visibility: hidden;
+    font-style: italic;
+}
+
+.killshot_round {
+    position: absolute;
+    /*
+    background-color: rgba(120,0,0,0.5);
+
+     */
+    background-color: #464646;
+    color: white;
+    z-index: 1;
+    width: 100%;
+    visibility: hidden;
+    font-style: italic;
+    margin-top: 60%;
+
+}
+
+.switch_sides_round {
+    position: absolute;
+    /*
+    background-color: rgba(120,0,0,0.5);
+
+     */
+    background-color: #464646;
+    color: white;
+    z-index: 1;
+    width: 100%;
+    visibility: hidden;
+    font-style: italic;
+    margin-top: 60%;
+
+}
+
+.tie_game_visual {
+    position: absolute;
+    /*
+    background-color: rgba(120,0,0,0.5);
+
+     */
+    background-color: #464646;
+    color: white;
+    z-index: 1;
+    width: 100%;
+    visibility: hidden;
+    font-style: italic;
+    margin-top: 60%;
+
+}
+
+.SB, .SA {
+    background-color: rgb(215, 37, 44);
+}
+
+/* SCORE TABLE */
+.scoreContainer {
+    width: 90%;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.score_table {
+    display: inline-block;
+    text-align: center;
+}
+
+.score_table_container {
+    width: 18%;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0px 30px;
+}
+
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+}
+
+th, td {
+    text-align: center;
+    padding: 3px 0;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+tr {
+    background-color: white;
+}
+
+tr:nth-child(5), tr:nth-child(10) {
+    background-color: #c2c2c2;
+}
+
+th {
+    background-color: rgb(215, 37, 44);
+    color: white;
+}
+
+table, tr, td {
+    border-style: solid;
+    border-color: #262626;
+    border-width: 2px;
+    text-align: center;
+
+}
+
+
+/* BUTTONS */
+.zoom {
+    overflow: hidden;
+    background-color: transparent;
+}
+
+.zoom_switch_btns_div {
+    text-align: center;
+    margin-top: 1%;
+    padding-bottom: 3%;
+}
+
+.button_container {
+    padding-top: 10%;
+}
+
+.button1 {
+    background-color: #bd9b75;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px 2px 0 2px;
+    color: black;
+    text-decoration: none;
+    position: inherit;
+    border-top-left-radius: 60%;
+    border-top-right-radius: 60%;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 0.9em;
+    outline: 0 none;
+}
+
+
+.button2, .button3, .button4 {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    background-color: rgb(215, 37, 44);
+    border-style: solid;
+    border-color: #262626;
+    border-width: 2px;
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 3%;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.button3:disabled, .button4:disabled {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    background-color: #b3a9a8;
+    border-style: solid;
+    border-color: #262626;
+    border-width: 2px;
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 3%;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.kill_shot_btn {
+    background-color: rgb(215, 37, 44);
+    border-style: solid;
+    border-color: #262626;
+    border-width: 1px;
+    color: black;
+    display: inline-block;
+    margin: 0.9em 0.3em 0.9em 0.3em;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9em;
+}
+
+.kill_shot_btn:disabled {
+    background-color: #b3a9a8;
+    border-style: solid;
+    border-color: #262626;
+    border-width: 1px;
+    color: black;
+    display: inline-block;
+    margin: 0 0 0 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9em;
+    height: 0;
+}
+
+.kill_shot_btn_container {
+    border-style: solid;
+    border-color: #262626;
+    border-width: 1px;
+    background-color: #262626;
+}
+
+.decide_winner_btn_container {
+    border-style: solid;
+    border-color: #262626;
+    border-width: 1px;
+    background-color: #262626;
+}
+
+
+/* CIRCLE DIVS */
+.circle1, .circle2, .circle3, .circle4, .circle5, .circle_k1,
+.circle1_R, .circle2_R, .circle3_R, .circle4_R, .circle5_R, .circle_k1_R {
+    border-style: solid;
+    border-color: black;
+    border-width: 3px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: #bd9b75;
+    cursor: pointer;
+}
+
+/* TOP NAVBAR/MENU   */
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+    position: relative;
+}
+
+.topnav #myLinks {
+    display: none;
+}
+
+.topnav a {
+    color: white;
+    padding-right: 16px;
+    padding-left: 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+}
+
+.topnav a.icon {
+    background: black;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.active {
+    background-color: rgb(215, 37, 44);
+    color: white;
+
+}
+
+.topnav #icon:active {
+    background-color: #ddd;
+    color: black;
+}
+
+
+/* MENU OVERLAY  */
+.overlay {
+    height: 0%;
+    width: 100%;
+    position: absolute;
+    z-index: 5;
+    left: 0;
+    background-color: #171616;
+    /*
+    background-color: rgba(0,0,0, 0.9);
+
+     */
+    overflow-y: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    /*
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+
+     */
+}
+
+.overlay a {
+    text-decoration: none;
+    color: #fff;
+    /*padding: 8px;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;*/
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+    .overlay {
+        overflow-y: auto;
+    }
+
+    .overlay a {
+        font-size: 20px
+    }
+
+    .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+    }
+}
+
+.tablink {
+    background-color: #0b0b0b;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+    width: 25%;
+}
+
+.tablink:hover {
+    background-color: #777;
+}
+
+.tabcontent {  /* Style the tab content (and add height:100% for full page content) */
+    color: white;
+    padding: 3% 2%;
+    height: 100%;
+    overflow: auto;
+    max-height: 100vh;
+    padding-bottom: 8%;
+}
+
+#Home {
+    background-color: #171616;
+}
+
+#Game {
+    background-color: #171616;
+}
+
+#Tips {
+    background-color: #171616;
+    background-color: #f5f5f5;
+    text-align: center;
+    width: 100%;
+}
+
+#Order {
+    background-color: #171616;
+}
+
+
+/* Game settings tab */
+.form-style-5{
+    max-width: 85%;
+    margin: 10px auto;
+    padding: 20px 0 40px 0;
+    background: #0b0b0b;
+    border-radius: 8px;
+}
+
+.form-style-5 fieldset{
+    border: none;
+    margin: 1%;
+}
+
+.form-style-5 legend {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.form-style-5 label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.form-style-5 input[type="text"],
+.form-style-5 select {
+
+    background: rgba(255,255,255,.1);
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-bottom: 30px;
+    outline: 0;
+    padding: 10px;
+    width: 38%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background-color: #e8eeef;
+    color: black;
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.form-style-5 input[type="text"]::placeholder {
+    color: #8a97a0;
+}
+
+.form-style-5 input[type="text"]:focus,
+.form-style-5 textarea:focus,
+.form-style-5 select:focus{
+    background: #d2d9dd;
+    color: black;
+}
+
+.form-style-5 select{
+    -webkit-appearance: menulist-button;
+    height:35px;
+}
+
+.form-style-5 input[type="submit_text"], #logout
+{
+    position: relative;
+    display: inline-block;
+    color: #FFF;
+    background: #c92229;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2rem;
+    text-align: center;
+    width: 40%;
+    border: 1px solid #c92229;;
+    border-width: 1px 1px 3px;
+    margin: 0 3%;
+    padding: 2%;
+}
+
+.vs_icon {
+    background: #c92229;;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    font-size: 0.8em;
+    line-height: 30px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+    border-radius: 15px 15px 15px 15px;
+    margin: 0 5%;
+}
+
+.form_container {
+    text-align: center;
+}
+
+.tester {
+    border-style: solid;
+    border-color: #262626;
+    border-width: 2px;
+    display: inline-block;
+    width: 30%;
+    position: absolute;
+    margin-top: 3%;
+    background-color: white;
+}
+
+.tester > span {
+    font-size: 28px;
+    text-align: center;
+}
+
+#logo {
+    max-width: 100%;
+    height: auto;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+@keyframes pulse {
+    from {
+        box-shadow:  0 0 0 0 rgba(51,51,51,1),
+        0 0 0 0 rgba(51,51,51,1);
+    }
+    to {
+        box-shadow:  0 0 0 0.1em rgba(51,51,51,1),
+        0 0 0 1em rgba(51,51,51,0);
+    }
+}
+
+
+.pulse-single:active {
+    animation: pulse 0.1s 1 ease-out;
+}
+
+#img_container {
+    background-color: #f5f5f5;
+    border-bottom-width: 2px;
+    border-color: #0b0b0b;
+    text-align: center;
+    border-radius: 8px;
+}
+
+#brackets {
+    max-width: 980px;
+    height: auto;
+}
+
+#form_buttons {
+    margin: 3% 3% 0 3%;
+    text-align: center;
+}
+
+
+/* Basic button styling */
+
+.pulsingButton {
+
+    box-shadow: 0 0 0 0 rgba(232, 76, 61, 0.7);
+    background-color: rgb(215, 37, 44);
+    -webkit-animation: pulsing 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+    -moz-animation: pulsing 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+    -ms-animation: pulsing 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+    animation: pulsing 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+    text-decoration: none !important;
+    color: #ffffff;
+    transition: all 300ms ease-in-out;
+}
+
+
+/* Comment-out to have the button continue to pulse on mouseover */
+
+a.pulsingButton:hover {
+    -webkit-animation: none;
+    -moz-animation: none;
+    -ms-animation: none;
+    animation: none;
+    color: #ffffff;
+}
+
+
+/* Animation */
+
+@-webkit-keyframes pulsing {
+    to {
+        box-shadow: 0 0 0 30px rgba(232, 76, 61, 0);
+    }
+}
+
+@-moz-keyframes pulsing {
+    to {
+        box-shadow: 0 0 0 30px rgba(232, 76, 61, 0);
+    }
+}
+
+@-ms-keyframes pulsing {
+    to {
+        box-shadow: 0 0 0 30px rgba(232, 76, 61, 0);
+    }
+}
+
+@keyframes pulsing {
+    to {
+        box-shadow: 0 0 0 30px rgba(232, 76, 61, 0);
+    }
+}
+
+
+.myGlower {
+
+    border: 5px solid #c9b100;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+
+}

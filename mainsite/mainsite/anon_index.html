@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Halimac Axe Throwing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="anon_index_styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
+
+</head>
+<body>
+<!-- Top Navigation Menu -->
+<div class="topnav" id="topNav">
+    <div class="active"></div>
+    <a href="javascript:void(0);" class="icon" id="icon" >
+        <i class="fa fa-bars"></i>
+    </a>
+</div>
+
+<!-- Overlay Menu Div -->
+<div id="myNav" class="overlay">
+    <div class="overlay-content">
+        <button class="tablink" onclick="openPage('Home', this, '#555')" id="defaultOpen">Home</button>
+        <button class="tablink" onclick="openPage('Game', this, '#555')">Game</button>
+        <button class="tablink" onclick="openPage('Tips', this, '#555')">Tips & Tricks</button>
+        <button class="tablink" onclick="openPage('Order', this, '#555')">Order</button>
+
+        <div id="Home" class="tabcontent"  >
+            <h3>Home</h3>
+            <p>STUFF ABOUT COMPANY/APP</p>
+            <p> - HOW TO PLAY/USE APP?</p>
+            <p> - HOW TO ORDER</p>
+            <p> - WHAT ELSE APP DOES</p>
+            <p> - ADDITIONAL INFORMATION REQUESTED, APP OPENS TO THIS PAGE?</p>
+        </div>
+
+        <div id="Game" class="tabcontent">
+            <div class="form-style-5">
+                <form>
+                    <fieldset>
+                        <legend>Match Info</legend>
+                        <div class="form_container">
+                            <input type="text" name="field1" id="left_pname" placeholder="Player 1">
+                            <span class="vs_icon">VS</span>
+                            <input type="text" name="field2" id="right_pname" placeholder="Player 2">
+                        </div>
+                    </fieldset>
+
+                    <div id = "form_buttons">
+                        <input type="submit_text" id="set_board" value="Set Board" />
+                        <a type="submit_text" id="logout" href="welcome.php">End Session</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- <div id="Tips" class="tabcontent">
+            <div id = "img_container">
+                <img id = "preload" src = "assets//bracket_rules_back.png">
+            </div>
+        </div> -->
+
+        <div id = "Tips" class = "tabcontent">
+            <img id = "brackets" src = "assets//bracket_rules_back.png">
+        </div>
+
+        <div id="Order" class="tabcontent">
+            <h3>Order Dranks</h3>
+            <p>Potential order page here</p>
+            <p>  PLACEHOLDER FORM TO DEMO POST TO DATABASE, WILL REPLACE WITH DYNAMIC ORDER FORM</p>
+            <br>
+            <form action="/action_page.php" id="usrform">
+                <label>Lane#:</label><br>
+                <input type="text" name="usrname">
+            </form>
+            <br>
+            <textarea rows="4" cols="50" name="comment" form="usrform" placeholder="Enter order.."></textarea>
+            <br>
+            <input type="submit">
+        </div>
+    </div>
+</div>
+
+<!-- Circles/Divs for Left scoreboard -->
+<div class="main_container">
+    <div class="tester">
+        <span id="player_a">PLAYER 1</span>
+    </div>
+    <div class="main_container_left">
+        <div class="win_alert_p1">
+            <h1>WINNER</h1>
+        </div>
+        <div class="killshot_round">
+            <h2>KILLSHOT ROUND</h2>
+        </div>
+        <div class="switch_sides_round">
+            <h2>SWITCHSIDES ROUND</h2>
+        </div>
+        <div class="tie_game_visual">
+            <h2>TIE BREAKER</h2>
+        </div>
+        <div class="zoom">
+            <div class="scoreContainer" id="container_left">
+                <div id="circle_point_1_A" class="circle1 pulse-single" >1</div>
+                <div id="circle_point_2_A" class="circle2 pulse-single" >2</div>
+                <div id="circle_point_3_A" class="circle3 pulse-single" >3</div>
+                <div id="circle_point_4_A" class="circle4 pulse-single" >4</div>
+                <div id="circle_point_6_A" class="circle5 pulse-single" >6</div>
+                <div id="circle_kill_left_A" class="circle_k1 pulse-single" >1</div>
+                <div id="circle_kill_left_B" class="circle_k1 pulse-single" >1</div>
+            </div>
+        </div>
+        <!-- Scoreboard buttons-->
+        <div id = "button_container_left" class="button_container">
+            <button class="drop_btn button1 pulse-single">Drop</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="zero_btn button1 pulse-single">Zero</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="fault_btn button1 pulse-single">Fault</button>
+        </div>
+        <!-- kill shot and winner buttons-->
+        <div id = "kill_shot_btn_container_left" class="kill_shot_btn_container">
+            <button id="killshot_button_left" class="kill_shot_btn real_killshot_button pulsingButton" disabled>Call Killshot</button>
+        </div>
+        <div  class="decide_winner_btn_container">
+            <button id = "declare_winner_left" class="kill_shot_btn declare_winner_btn pulsingButton" disabled>Declare Winner</button>
+        </div>
+    </div>
+
+    <!-- Table Scoreboard -->
+    <div class="score_table_container">
+        <div class="score_table">
+            <img src="assets/halimac_logo_BLK_red.png" id = "logo">
+            <table id="myScoreTable">
+                <tr>
+                    <td id = "pt1_A" class = "A"></td>
+                    <td id = "pt1_B" class = "B" ></td>
+                </tr>
+                <tr>
+                    <td id = "pt2_A" class = "A"></td>
+                    <td id = "pt2_B" class = "B"></td>
+                </tr>
+                <tr>
+                    <td id = "pt3_A" class = "A"></td>
+                    <td id = "pt3_B" class = "B"></td>
+                </tr>
+                <tr>
+                    <td id = "pt4_A" class = "A"></td>
+                    <td id = "pt4_B" class = "B"></td>
+                </tr>
+                <tr>
+                    <td id = "pt5_A" class = "A"></td>
+                    <td id = "pt5_B" class = "B"></td>
+                </tr>
+                <tr>
+                    <td id = "pt6_A" class = "A"></td>
+                    <td id = "pt6_B" class = "B"></td>
+                </tr>
+                <tr>
+                    <td id = "pt7_A" class = "A"></td>
+                    <td id = "pt7_B" class = B></td>
+                </tr>
+                <tr>
+                    <td id = "pt8_A" class = "A"></td>
+                    <td id = "pt8_B" class = "B"></td>
+                </tr>
+                <tr>
+                    <td id = "pt9_A" class = "A"></td>
+                    <td id = "pt9_B" class = "B"></td>
+                </tr>
+                <tr>
+                    <td id = "pt10_A" class = "A"></td>
+                    <td id = "pt10_B" class = "B"></td>
+                </tr>
+                <tr>
+                    <td id = "score_A" class = "SA">0</td>
+                    <td id = "score_B" class = "SB">0</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- Circles/Divs for Right Scoreboard-->
+    <div class="tester">
+        <span id="player_b">PLAYER 2</span>
+    </div>
+    <div class="main_container_right">
+        <div class="win_alert_p2">
+            <h1>WINNER</h1>
+        </div>
+        <div class="killshot_round">
+            <h2>KILLSHOT ROUND</h2>
+        </div>
+        <div class="switch_sides_round">
+            <h2>SWITCHSIDES ROUND</h2>
+        </div>
+        <div class="tie_game_visual">
+            <h2>TIE BREAKER</h2>
+        </div>
+        <div class="zoom">
+            <div class="scoreContainer" id="container_right">
+                <div id="circle_point_1_B" class="circle1_R pulse-single" >1</div>
+                <div id="circle_point_2_B" class="circle2_R pulse-single" >2</div>
+                <div id="circle_point_3_B" class="circle3_R pulse-single" >3</div>
+                <div id="circle_point_4_B" class="circle4_R pulse-single" >4</div>
+                <div id="circle_point_6_B" class="circle5_R pulse-single" >6</div>
+                <div id="circle_kill_right_A" class="circle_k1_R pulse-single" >1</div>
+                <div id="circle_kill_right_B" class="circle_k1_R pulse-single" >1</div>
+            </div>
+        </div>
+        <!-- Scoreboard buttons-->
+        <div id = "button_container_right" class="button_container">
+            <button class="drop_btn button1 pulse-single">Drop</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="zero_btn button1 pulse-single">Zero</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="fault_btn button1 pulse-single">Fault</button>
+        </div>
+        <!-- kill shot and winner buttons-->
+        <div id = "kill_shot_btn_container_right" class="kill_shot_btn_container">
+            <button id="killshot_button_right" class="kill_shot_btn real_killshot_button pulsingButton" disabled>Call Killshot</button>
+        </div>
+        <div  class="decide_winner_btn_container">
+            <button id = "declare_winner_right" class="kill_shot_btn declare_winner_btn pulsingButton" disabled>Declare Winner</button>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <!-- zoom and switch buttons -->
+    <div class="zoom_switch_btns_div">
+        <button id="zoom_button" class="button2"><i class="fas fa-search"></i></button>
+        <button id="switch_sides_btn" class="button3 pulsingButton" disabled>Switch Sides</button>
+        <button id="submit_scores_btn" class="button4 pulsingButton" disabled>Reset Game</button>
+    </div>
+
+</div>
+<div id="dialog-message" title="Confirm Scores">
+    <p>
+        <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+        <b>Check scores before submission.</b>
+
+    </p>
+    <br>
+    <p>You can edit scores by clicking the table to remove and adding the correct value.
+        <b>Submitting will end the game. Continue?.</b></p>
+</div>
+<!-- JQuery and custom scripts-->
+<script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+<script src="jquery-ui.js"></script>
+<script src="anon_index_scripts.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,349 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.5
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jan 31, 2022 at 10:19 PM
+-- Server version: 10.1.39-MariaDB
+-- PHP Version: 7.3.5
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `halimac_axe`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) COLLATE utf8_bin NOT NULL,
+  `password` varchar(255) COLLATE utf8_bin NOT NULL,
+  `role` varchar(20) COLLATE utf8_bin NOT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `role`, `created_at`) VALUES
+(1, 'tester', 'password1', 'admin', '2020-02-27 20:32:23'),
+(2, 'admin', '$2y$10$Uwu9nnKsg5Y6rVoUmKokX.7BokzaGQ404jQ8an3KR5V0BA9bs7df6', 'admin', '2020-02-27 21:28:57'),
+(3, 'user', '$2y$10$QqrXOK87CZWHg5c1Yai.KuFNh.GvvRoHrLIQf0QjjMuff6..3Qajy', 'user', '2020-03-01 18:13:55');
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `playerscore`
+--
+
+CREATE TABLE `playerscore` (
+  `playerId` int(11) NOT NULL,
+  `gameId` int(11) NOT NULL,
+  `point_1` varchar(5) COLLATE utf8_bin DEFAULT NULL,
+  `point_2` varchar(5) COLLATE utf8_bin DEFAULT NULL,
+  `point_3` varchar(5) COLLATE utf8_bin DEFAULT NULL,
+  `point_4` varchar(5) COLLATE utf8_bin DEFAULT NULL,
+  `point_5` varchar(5) COLLATE utf8_bin DEFAULT NULL,
+  `point_6` varchar(5) COLLATE utf8_bin DEFAULT NULL,
+  `point_7` varchar(5) COLLATE utf8_bin DEFAULT NULL,
+  `point_8` varchar(5) COLLATE utf8_bin DEFAULT NULL,
+  `point_9` varchar(5) COLLATE utf8_bin DEFAULT NULL,
+  `point_10` varchar(5) COLLATE utf8_bin DEFAULT NULL,
+  `finalScore` int(3) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `playerscore`
+--
+
+INSERT INTO `playerscore` (`playerId`, `gameId`, `point_1`, `point_2`, `point_3`, `point_4`, `point_5`, `point_6`, `point_7`, `point_8`, `point_9`, `point_10`, `finalScore`) VALUES
+(100, 1000, '3', '2', '4', '1', '2', '3', ' ', ' ', ' ', ' ', NULL),
+(100, 1004, '3', '3', '4', '1', '2', '2', ' ', ' ', ' ', ' ', NULL),
+(100, 1005, '3', '3', '2', '2', '3', '3', '4', '6', '6', '4', 36),
+(100, 1006, '3', '3', '3', ' ', ' ', ' ', ' ', ' ', ' ', ' ', NULL),
+(101, 1000, '4', '3', '2', '3', '2', '2', ' ', ' ', ' ', ' ', NULL),
+(101, 1002, '1', '1', '1', '2', '3', '3', '2', '3', '3', '0', 19),
+(101, 1005, '2', '3', '2', '3', '2', '2', '3', '3', '4', '6', 30),
+(102, 1001, '2', '2', '2', '2', '2', '2', '3', '4', '3', '4', 26),
+(102, 1003, '4', '3', '3', '3', '2', '3', 'F', '1', '6', '6', 31),
+(102, 1004, '4', '1', '3', '3', '2', '3', ' ', ' ', ' ', ' ', NULL),
+(102, 1007, '2', '3', '4', '2', ' ', ' ', ' ', ' ', ' ', ' ', NULL),
+(103, 1001, '2', '2', '2', '3', '3', '2', '2', '3', '3', '3', 25),
+(103, 1002, '3', '2', '2', '3', '2', '4', '3', '2', '3', '3', 27),
+(103, 1003, '2', '2', '6', '4', '1', '2', '4', '1', '6', '0', 28),
+(103, 1006, '2', '3', '2', '1', ' ', ' ', ' ', ' ', ' ', ' ', NULL),
+(103, 1007, '3', '3', '3', ' ', ' ', ' ', ' ', ' ', ' ', ' ', NULL);
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `playergame`
+--
+
+CREATE TABLE `playergame` (
+  `gameId` int(11) NOT NULL,
+  `playerOneId` int(11) NOT NULL,
+  `playerTwoId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `playergame`
+--
+
+INSERT INTO `playergame` (`gameId`, `playerOneId`, `playerTwoId`) VALUES
+(1000, 100, 101),
+(1001, 102, 103),
+(1002, 101, 103),
+(1003, 102, 103),
+(1004, 102, 100),
+(1005, 100, 101),
+(1006, 100, 103),
+(1007, 102, 103);
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `player`
+--
+
+CREATE TABLE `player` (
+  `playerId` int(11) NOT NULL,
+  `firstName` varchar(55) COLLATE utf8_bin NOT NULL,
+  `lastName` varchar(55) COLLATE utf8_bin NOT NULL,
+  `email` varchar(30) COLLATE utf8_bin DEFAULT NULL,
+  `dob` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `player`
+--
+
+INSERT INTO `player` (`playerId`, `firstName`, `lastName`, `email`, `dob`) VALUES
+(100, 'Jim', 'Tucker', NULL, NULL),
+(101, 'Maria', 'Debbie', NULL, NULL),
+(102, 'Milhouse', 'Vanhout', 'thehouse@email.com', '1994-11-20'),
+(103, 'Homer', 'Simpson', 'chunkylover63@email.com', '1994-11-20'),
+(104, 'Bilbo', 'Baggins', 'bbag@email.com', '0000-00-00'),
+(105, 'Brain', 'W', 'bw@hotmail.com', '1994-11-20'),
+(106, 'Sheena', 'Tittle', 'weenie@email.com', '2000-11-04'),
+(107, 'Jim ', 'Bob', 'jb@email.com', '1994-11-20');
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gameorder`
+--
+
+CREATE TABLE `gameorder` (
+  `orderId` int(11) NOT NULL,
+  `gameId` int(11) NOT NULL,
+  `orderDetails` varchar(255) COLLATE utf8_bin NOT NULL,
+  `orderFilled` tinyint(1) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `gameorder`
+--
+
+INSERT INTO `gameorder` (`orderId`, `gameId`, `orderDetails`, `orderFilled`) VALUES
+(1, 1000, '2 Coors, 5 shots', 0),
+(2, 1000, 'beers', 0);
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `game`
+--
+
+CREATE TABLE `game` (
+  `gameId` int(11) NOT NULL,
+  `gamelane` varchar(30) COLLATE utf8_bin NOT NULL,
+  `gameDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `gameComplete` int(1) DEFAULT '0',
+  `gameWinner` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `game`
+--
+
+INSERT INTO `game` (`gameId`, `gamelane`, `gameDate`, `gameComplete`, `gameWinner`) VALUES
+(1000, '4', '0000-00-00 00:00:00', 0, NULL),
+(1001, '5', '0000-00-00 00:00:00', 1, 102),
+(1002, '5', '0000-00-00 00:00:00', 1, 103),
+(1003, '6', '2020-03-13 23:59:20', 1, 102),
+(1004, '4', '2020-03-22 18:34:19', 0, NULL),
+(1005, '7', '2020-04-13 23:57:18', 1, 100),
+(1006, '5', '2020-04-14 00:01:59', 0, NULL),
+(1007, '6', '2020-04-14 00:05:19', 0, NULL);
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `anongame`
+--
+
+CREATE TABLE `anongame` (
+  `id` int(10) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `playerOne` varchar(30) COLLATE utf8_bin NOT NULL,
+  `playerTwo` varchar(30) COLLATE utf8_bin NOT NULL,
+  `finalP1Score` varchar(5) COLLATE utf8_bin NOT NULL,
+  `finalP2Score` varchar(5) COLLATE utf8_bin NOT NULL,
+  `gameWinner` varchar(30) COLLATE utf8_bin NOT NULL,
+  `player_one_pt1` varchar(1) COLLATE utf8_bin NOT NULL,
+  `player_one_pt2` varchar(1) COLLATE utf8_bin NOT NULL,
+  `player_one_pt3` varchar(1) COLLATE utf8_bin NOT NULL,
+  `player_one_pt4` varchar(1) COLLATE utf8_bin NOT NULL,
+  `player_one_pt5` varchar(1) COLLATE utf8_bin NOT NULL,
+  `player_one_pt6` varchar(1) COLLATE utf8_bin NOT NULL,
+  `player_one_pt7` varchar(1) COLLATE utf8_bin NOT NULL,
+  `player_one_pt8` varchar(1) COLLATE utf8_bin NOT NULL,
+  `player_one_pt9` varchar(1) COLLATE utf8_bin NOT NULL,
+  `player_one_pt10` varchar(1) COLLATE utf8_bin NOT NULL,
+  `player_two_pt1` varchar(1) COLLATE utf8_bin NOT NULL,
+  `player_two_pt2` varchar(1) COLLATE utf8_bin NOT NULL,
+  `player_two_pt3` varchar(1) COLLATE utf8_bin NOT NULL,
+  `player_two_pt4` varchar(1) COLLATE utf8_bin NOT NULL,
+  `player_two_pt5` varchar(1) COLLATE utf8_bin NOT NULL,
+  `player_two_pt6` varchar(1) COLLATE utf8_bin NOT NULL,
+  `player_two_pt7` varchar(1) COLLATE utf8_bin NOT NULL,
+  `player_two_pt8` varchar(1) COLLATE utf8_bin NOT NULL,
+  `player_two_pt9` varchar(1) COLLATE utf8_bin NOT NULL,
+  `player_two_pt10` varchar(1) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `anongame`
+--
+
+INSERT INTO `anongame` (`id`, `date`, `playerOne`, `playerTwo`, `finalP1Score`, `finalP2Score`, `gameWinner`, `player_one_pt1`, `player_one_pt2`, `player_one_pt3`, `player_one_pt4`, `player_one_pt5`, `player_one_pt6`, `player_one_pt7`, `player_one_pt8`, `player_one_pt9`, `player_one_pt10`, `player_two_pt1`, `player_two_pt2`, `player_two_pt3`, `player_two_pt4`, `player_two_pt5`, `player_two_pt6`, `player_two_pt7`, `player_two_pt8`, `player_two_pt9`, `player_two_pt10`) VALUES
+(6, '2020-04-13 18:12:40', 'Frank', 'Jim', '44', '34', 'Frank', '6', '4', '2', '3', '6', '6', '4', '6', '4', '3', '3', '4', '4', '6', '2', '2', '1', '2', '2', '8');
+
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `anongame`
+--
+ALTER TABLE `anongame`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `game`
+--
+ALTER TABLE `game`
+  ADD PRIMARY KEY (`gameId`),
+  ADD UNIQUE KEY `gameId` (`gameId`),
+  ADD KEY `gameWinner` (`gameWinner`) USING BTREE;
+
+--
+-- Indexes for table `gameorder`
+--
+ALTER TABLE `gameorder`
+  ADD PRIMARY KEY (`orderId`),
+  ADD KEY `FKgameId_GameOrder` (`gameId`);
+
+--
+-- Indexes for table `player`
+--
+ALTER TABLE `player`
+  ADD PRIMARY KEY (`playerId`);
+
+--
+-- Indexes for table `playergame`
+--
+ALTER TABLE `playergame`
+  ADD PRIMARY KEY (`gameId`,`playerOneId`,`playerTwoId`),
+  ADD UNIQUE KEY `gameId` (`gameId`),
+  ADD KEY `FKplayerOneId_PlayerGame` (`playerOneId`),
+  ADD KEY `FKplayerTwoId_PlayerGame` (`playerTwoId`);
+
+--
+-- Indexes for table `playerscore`
+--
+ALTER TABLE `playerscore`
+  ADD PRIMARY KEY (`playerId`,`gameId`),
+  ADD KEY `FKgameId_PlayerScore` (`gameId`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `anongame`
+--
+ALTER TABLE `anongame`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `game`
+--
+ALTER TABLE `game`
+  ADD CONSTRAINT `game_ibfk_1` FOREIGN KEY (`gameWinner`) REFERENCES `player` (`playerId`);
+
+--
+-- Constraints for table `gameorder`
+--
+ALTER TABLE `gameorder`
+  ADD CONSTRAINT `FKgameId_GameOrder` FOREIGN KEY (`gameId`) REFERENCES `game` (`gameId`);
+
+--
+-- Constraints for table `playergame`
+--
+ALTER TABLE `playergame`
+  ADD CONSTRAINT `FKgameID_PlayerGame` FOREIGN KEY (`gameId`) REFERENCES `game` (`gameId`),
+  ADD CONSTRAINT `FKplayerOneId_PlayerGame` FOREIGN KEY (`playerOneId`) REFERENCES `player` (`playerId`),
+  ADD CONSTRAINT `FKplayerTwoId_PlayerGame` FOREIGN KEY (`playerTwoId`) REFERENCES `player` (`playerId`);
+
+--
+-- Constraints for table `playerscore`
+--
+ALTER TABLE `playerscore`
+  ADD CONSTRAINT `FKgameId_PlayerScore` FOREIGN KEY (`gameId`) REFERENCES `game` (`gameId`),
+  ADD CONSTRAINT `FKplayerId_PlayerScore` FOREIGN KEY (`playerId`) REFERENCES `player` (`playerId`);
+
