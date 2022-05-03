@@ -1,5 +1,7 @@
 # JackAxes
  Jack Axes website overhaul
+ 
+Author: Mohamed ElSayed
 
 First of all, you have to download XAMPP from Apache’s website:
 
